@@ -71,8 +71,8 @@
 // @section info
 
 // Author info of this build printed to the host during boot and M115
-#define STRING_CONFIG_H_AUTHOR "(Defrino Gionaldo, 25-5-2021  Ender-3 Pro SKR 1.4T)" // Who made the changes.
-#define CUSTOM_VERSION_FILE Version.h                                                // Path from the root directory (no quotes)
+#define STRING_CONFIG_H_AUTHOR "(Defrino Gionaldo, 26-5-2021  Ender-3 Pro SKR 1.4T)" // Who made the changes.
+//#define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
 
 /**
  * *** VENDORS PLEASE READ ***
@@ -145,7 +145,7 @@
 #endif
 
 // Name displayed in the LCD "Ready" message and Info menu
-#define CUSTOM_MACHINE_NAME "DEFF - SKR V1.4T"
+#define CUSTOM_MACHINE_NAME "EDO - SKR 1.4T"
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like https://www.uuidgenerator.net/version4
@@ -189,10 +189,10 @@
 //#define SWITCHING_EXTRUDER
 #if ENABLED(SWITCHING_EXTRUDER)
 #define SWITCHING_EXTRUDER_SERVO_NR 0
-#define SWITCHING_EXTRUDER_SERVO_ANGLES
-{
-  0, 90
-} // Angles for E0, E1[, E2, E3]
+#define SWITCHING_EXTRUDER_SERVO_ANGLES \
+  {                                     \
+    0, 90                               \
+  } // Angles for E0, E1[, E2, E3]
 #if EXTRUDERS > 3
 #define SWITCHING_EXTRUDER_E23_SERVO_NR 1
 #endif
@@ -203,10 +203,10 @@
 #if ENABLED(SWITCHING_NOZZLE)
 #define SWITCHING_NOZZLE_SERVO_NR 0
 //#define SWITCHING_NOZZLE_E1_SERVO_NR 1          // If two servos are used, the index of the second
-#define SWITCHING_NOZZLE_SERVO_ANGLES
-{
-  0, 90
-} // Angles for E0, E1 (single servo) or lowered/raised (dual servo)
+#define SWITCHING_NOZZLE_SERVO_ANGLES \
+  {                                   \
+    0, 90                             \
+  } // Angles for E0, E1 (single servo) or lowered/raised (dual servo)
 #endif
 
 /**
@@ -227,10 +227,10 @@
 
 #if EITHER(PARKING_EXTRUDER, MAGNETIC_PARKING_EXTRUDER)
 
-#define PARKING_EXTRUDER_PARKING_X
-{
-  -78, 184
-} // X positions for parking the extruders
+#define PARKING_EXTRUDER_PARKING_X \
+  {                                \
+    -78, 184                       \
+  }                                      // X positions for parking the extruders
 #define PARKING_EXTRUDER_GRAB_DISTANCE 1 // (mm) Distance to move beyond the parking point to grab the extruder
 //#define MANUAL_SOLENOID_CONTROL                   // Manual control of docking solenoids with M380 S / M381
 
@@ -281,23 +281,23 @@
 #define SWITCHING_TOOLHEAD_Y_POS 235     // (mm) Y position of the toolhead dock
 #define SWITCHING_TOOLHEAD_Y_SECURITY 10 // (mm) Security distance Y axis
 #define SWITCHING_TOOLHEAD_Y_CLEAR 60    // (mm) Minimum distance from dock for unobstructed X axis
-#define SWITCHING_TOOLHEAD_X_POS
-{
-  215, 0
-} // (mm) X positions for parking the extruders
+#define SWITCHING_TOOLHEAD_X_POS \
+  {                              \
+    215, 0                       \
+  } // (mm) X positions for parking the extruders
 #if ENABLED(SWITCHING_TOOLHEAD)
 #define SWITCHING_TOOLHEAD_SERVO_NR 2 // Index of the servo connector
-#define SWITCHING_TOOLHEAD_SERVO_ANGLES
-{
-  0, 180
-} // (degrees) Angles for Lock, Unlock
+#define SWITCHING_TOOLHEAD_SERVO_ANGLES \
+  {                                     \
+    0, 180                              \
+  } // (degrees) Angles for Lock, Unlock
 #elif ENABLED(MAGNETIC_SWITCHING_TOOLHEAD)
 #define SWITCHING_TOOLHEAD_Y_RELEASE 5 // (mm) Security distance Y axis
-#define SWITCHING_TOOLHEAD_X_SECURITY
-{
-  90, 150
-} // (mm) Security distance X axis (T0,T1)
-  //#define PRIME_BEFORE_REMOVE                       // Prime the nozzle before release from the dock
+#define SWITCHING_TOOLHEAD_X_SECURITY \
+  {                                   \
+    90, 150                           \
+  } // (mm) Security distance X axis (T0,T1)
+//#define PRIME_BEFORE_REMOVE                       // Prime the nozzle before release from the dock
 #if ENABLED(PRIME_BEFORE_REMOVE)
 #define SWITCHING_TOOLHEAD_PRIME_MM 20           // (mm)   Extruder prime length
 #define SWITCHING_TOOLHEAD_RETRACT_MM 10         // (mm)   Retract after priming length
@@ -538,18 +538,18 @@
 #if ENABLED(PID_PARAMS_PER_HOTEND)
 // Specify between 1 and HOTENDS values per array.
 // If fewer than EXTRUDER values are provided, the last element will be repeated.
-#define DEFAULT_Kp_LIST
-{
-  22.20, 22.20
-}
-#define DEFAULT_Ki_LIST
-{
-  1.08, 1.08
-}
-#define DEFAULT_Kd_LIST
-{
-  114.00, 114.00
-}
+#define DEFAULT_Kp_LIST \
+  {                     \
+    22.20, 22.20        \
+  }
+#define DEFAULT_Ki_LIST \
+  {                     \
+    1.08, 1.08          \
+  }
+#define DEFAULT_Kd_LIST \
+  {                     \
+    114.00, 114.00      \
+  }
 #else
 #define DEFAULT_Kp 22.20
 #define DEFAULT_Ki 1.08
@@ -840,27 +840,27 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT
-{
-  80, 80, 400, 141
-}
+#define DEFAULT_AXIS_STEPS_PER_UNIT \
+  {                                 \
+    80, 80, 400, 141                \
+  }
 
 /**
  * Default Max Feed Rate (mm/s)
  * Override with M203
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE
-{
-  500, 500, 5, 25
-}
+#define DEFAULT_MAX_FEEDRATE \
+  {                          \
+    500, 500, 10, 25         \
+  }
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
-#define MAX_FEEDRATE_EDIT_VALUES
-{
-  600, 600, 10, 50
-} // ...or, set your own edit limits
+#define MAX_FEEDRATE_EDIT_VALUES \
+  {                              \
+    600, 600, 10, 50             \
+  } // ...or, set your own edit limits
 #endif
 
 /**
@@ -869,17 +869,17 @@
  * Override with M201
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_ACCELERATION
-{
-  500, 500, 100, 5000
-}
+#define DEFAULT_MAX_ACCELERATION \
+  {                              \
+    500, 500, 100, 5000          \
+  }
 
 //#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
-#define MAX_ACCEL_EDIT_VALUES
-{
-  3000, 3000, 100, 5000
-} // ...or, set your own edit limits
+#define MAX_ACCEL_EDIT_VALUES \
+  {                           \
+    3000, 3000, 100, 5000     \
+  } // ...or, set your own edit limits
 #endif
 
 /**
@@ -912,10 +912,10 @@
 
 //#define LIMITED_JERK_EDITING        // Limit edit via M205 or LCD to DEFAULT_aJERK * 2
 #if ENABLED(LIMITED_JERK_EDITING)
-#define MAX_JERK_EDIT_VALUES
-{
-  20, 20, 0.6, 10
-} // ...or, set your own edit limits
+#define MAX_JERK_EDIT_VALUES \
+  {                          \
+    20, 20, 0.6, 10          \
+  } // ...or, set your own edit limits
 #endif
 #endif
 
@@ -1107,10 +1107,10 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET
-{
-  -51.12, -8.300, 0
-}
+#define NOZZLE_TO_PROBE_OFFSET \
+  {                            \
+    -51.12, -8.300, 0          \
+  } // Deff offset { -51.12, -8.300, -00.550 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1468,7 +1468,7 @@
  * Turn on with the command 'M111 S32'.
  * NOTE: Requires a lot of PROGMEM!
  */
-#define DEBUG_LEVELING_FEATURE
+//#define DEBUG_LEVELING_FEATURE
 
 #if ANY(MESH_BED_LEVELING, AUTO_BED_LEVELING_UBL, PROBE_MANUALLY)
 // Set a height for the start of manual adjustment
@@ -1585,10 +1585,10 @@
 //#define LEVEL_BED_CORNERS
 
 #if ENABLED(LEVEL_BED_CORNERS)
-#define LEVEL_CORNERS_INSET_LFRB
-{
-  30, 30, 30, 30
-} // (mm) Left, Front, Right, Back insets
+#define LEVEL_CORNERS_INSET_LFRB \
+  {                              \
+    30, 30, 30, 30               \
+  }                              // (mm) Left, Front, Right, Back insets
 #define LEVEL_CORNERS_HEIGHT 0.0 // (mm) Z height of nozzle at leveling points
 #define LEVEL_CORNERS_Z_HOP 4.0  // (mm) Z height of nozzle between leveling points
 //#define LEVEL_CENTER_TOO              // Move to the center after the last corner
@@ -1616,10 +1616,10 @@
    *  |  1       2  |   | 1         4 |    | 1         2 |   | 2           |
    *  LF --------- RF   LF --------- RF    LF --------- RF   LF --------- RF
    */
-#define LEVEL_CORNERS_LEVELING_ORDER
-{
-  LF, RF, RB, LB
-}
+#define LEVEL_CORNERS_LEVELING_ORDER \
+  {                                  \
+    LF, RF, RB, LB                   \
+  }
 #endif
 
 /**
@@ -1651,15 +1651,15 @@
 #define Z_SAFE_HOMING
 
 #if ENABLED(Z_SAFE_HOMING)
-#define Z_SAFE_HOMING_X_POINT ((X_BED_SIZE) / 2) // X point for Z homing when homing all axes (G28).
-#define Z_SAFE_HOMING_Y_POINT ((Y_BED_SIZE) / 2) // Y point for Z homing when homing all axes (G28).
+#define Z_SAFE_HOMING_X_POINT X_CENTER // X point for Z homing
+#define Z_SAFE_HOMING_Y_POINT Y_CENTER // Y point for Z homing
 #endif
 
 // Homing speeds (mm/min)
-#define HOMING_FEEDRATE_MM_M
-{
-  (50 * 60), (50 * 60), (4 * 60)
-}
+#define HOMING_FEEDRATE_MM_M       \
+  {                                \
+    (50 * 60), (50 * 60), (4 * 60) \
+  }
 
 // Validate that endstops are triggered on homing moves
 #define VALIDATE_HOMING_ENDSTOPS
@@ -1796,15 +1796,15 @@
 
 #if ENABLED(NOZZLE_PARK_FEATURE)
 // Specify a park position as { X, Y, Z_raise }
-#define NOZZLE_PARK_POINT
-{
-  (X_MIN_POS + 10), (Y_MIN_POS + 10), 20
-}
+#define NOZZLE_PARK_POINT                  \
+  {                                        \
+    (X_MIN_POS + 10), (Y_MIN_POS + 10), 20 \
+  }
 //#define NOZZLE_PARK_X_ONLY          // X move only is required to park
 //#define NOZZLE_PARK_Y_ONLY          // Y move only is required to park
 #define NOZZLE_PARK_Z_RAISE_MIN 2   // (mm) Always raise Z by at least this distance
 #define NOZZLE_PARK_XY_FEEDRATE 200 // (mm/s) X and Y axes feedrate (also used for delta Z axis)
-#define NOZZLE_PARK_Z_FEEDRATE 5    // (mm/s) Z axis feedrate (not used for delta printers)
+#define NOZZLE_PARK_Z_FEEDRATE 10   // (mm/s) Z axis feedrate (not used for delta printers)
 #endif
 
 /**
@@ -1855,18 +1855,18 @@
 
 // Specify positions for each tool as { { X, Y, Z }, { X, Y, Z } }
 // Dual hotend system may use { {  -20, (Y_BED_SIZE / 2), (Z_MIN_POS + 1) },  {  420, (Y_BED_SIZE / 2), (Z_MIN_POS + 1) }}
-#define NOZZLE_CLEAN_START_POINT
-{
-  {
-    30, 30, (Z_MIN_POS + 1)
+#define NOZZLE_CLEAN_START_POINT \
+  {                              \
+    {                            \
+      30, 30, (Z_MIN_POS + 1)    \
+    }                            \
   }
-}
-#define NOZZLE_CLEAN_END_POINT
-{
-  {
-    100, 60, (Z_MIN_POS + 1)
+#define NOZZLE_CLEAN_END_POINT \
+  {                            \
+    {                          \
+      100, 60, (Z_MIN_POS + 1) \
+    }                          \
   }
-}
 
 // Circular pattern radius
 #define NOZZLE_CLEAN_CIRCLE_RADIUS 6.5
@@ -2788,7 +2788,7 @@
 #define NEOPIXEL2_BRIGHTNESS 127 // Initial brightness (0-255)
 #define NEOPIXEL2_STARTUP_TEST   // Cycle through colors at startup
 #else
-  //#define NEOPIXEL2_INSERIES      // Default behavior is NeoPixel 2 in parallel
+//#define NEOPIXEL2_INSERIES      // Default behavior is NeoPixel 2 in parallel
 #endif
 
 // Use a single NeoPixel LED for static (background) lighting
@@ -2824,10 +2824,10 @@
 // (ms) Delay  before the next move will start, to give the servo time to reach its target angle.
 // 300ms is a good value but you can try less delay.
 // If the servo can't reach the requested position, increase it.
-#define SERVO_DELAY
-{
-  300
-}
+#define SERVO_DELAY \
+  {                 \
+    300             \
+  }
 
 // Only power servos during movement, otherwise leave off to prevent jitter
 //#define DEACTIVATE_SERVOS_AFTER_MOVE

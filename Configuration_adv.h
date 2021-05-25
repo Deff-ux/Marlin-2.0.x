@@ -1838,8 +1838,8 @@
 //#define BABYSTEP_XY                     // Also enable X/Y Babystepping. Not supported on DELTA!
 #define BABYSTEP_INVERT_Z false // Change if Z babysteps should go the other way
 //#define BABYSTEP_MILLIMETER_UNITS       // Specify BABYSTEP_MULTIPLICATOR_(XY|Z) in mm instead of micro-steps
-#define BABYSTEP_MULTIPLICATOR_Z 0.5 // (steps or mm) Steps or millimeter distance for each Z babystep
-#define BABYSTEP_MULTIPLICATOR_XY 1  // (steps or mm) Steps or millimeter distance for each XY babystep
+#define BABYSTEP_MULTIPLICATOR_Z 1  // (steps or mm) Steps or millimeter distance for each Z babystep
+#define BABYSTEP_MULTIPLICATOR_XY 1 // (steps or mm) Steps or millimeter distance for each XY babystep
 
 #define DOUBLECLICK_FOR_Z_BABYSTEPPING // Double-click on the Status Screen for Z Babystepping.
 #if ENABLED(DOUBLECLICK_FOR_Z_BABYSTEPPING)
@@ -3596,9 +3596,9 @@
  */
 
 // Custom Menu: Main Menu
-//#define CUSTOM_MENU_MAIN
+#define CUSTOM_MENU_MAIN
 #if ENABLED(CUSTOM_MENU_MAIN)
-//#define CUSTOM_MENU_MAIN_TITLE "Custom Commands"
+#define CUSTOM_MENU_MAIN_TITLE "Main Menu"
 #define CUSTOM_MENU_MAIN_SCRIPT_DONE "M117 User Script Done"
 #define CUSTOM_MENU_MAIN_SCRIPT_AUDIBLE_FEEDBACK
 //#define CUSTOM_MENU_MAIN_SCRIPT_RETURN   // Return to status screen after a script
